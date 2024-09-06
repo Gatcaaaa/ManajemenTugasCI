@@ -15,11 +15,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Dashboard - Tabler - Premium and Open Source dashboard template with responsive and high quality UI.</title>
     <!-- CSS files -->
-    <link href="./dist/css/tabler.min.css?1692870487" rel="stylesheet" />
-    <link href="./dist/css/tabler-flags.min.css?1692870487" rel="stylesheet" />
-    <link href="./dist/css/tabler-payments.min.css?1692870487" rel="stylesheet" />
-    <link href="./dist/css/tabler-vendors.min.css?1692870487" rel="stylesheet" />
-    <link href="./dist/css/demo.min.css?1692870487" rel="stylesheet" />
+    <link href="<?= base_url('dist/css/tabler.min.css?1692870487') ?>" rel="stylesheet" />
+    <link href="<?= base_url('dist/css/tabler-flags.min.css?1692870487') ?>" rel="stylesheet" />
+    <link href="<?= base_url('dist/css/tabler-payments.min.css?1692870487') ?>" rel="stylesheet" />
+    <link href="<?= base_url('dist/css/tabler-vendors.min.css?1692870487') ?>" rel="stylesheet" />
+    <link href="<?= base_url('dist/css/demo.min.css?1692870487') ?>" rel="stylesheet" />
     <style>
     @import url('https://rsms.me/inter/inter.css');
 
@@ -34,20 +34,21 @@
 </head>
 
 <body>
-    <script src="./dist/js/demo-theme.min.js?1692870487"></script>
+    <script src="<?= base_url('dist/js/demo-theme.min.js?1692870487') ?>">
+    </script>
 
     <?= $this->include('nav')?>
 
     <?= $this->renderSection('content'); ?>
 
     <!-- Libs JS -->
-    <script src="./dist/libs/apexcharts/dist/apexcharts.min.js?1692870487" defer></script>
-    <script src="./dist/libs/jsvectormap/dist/js/jsvectormap.min.js?1692870487" defer></script>
-    <script src="./dist/libs/jsvectormap/dist/maps/world.js?1692870487" defer></script>
-    <script src="./dist/libs/jsvectormap/dist/maps/world-merc.js?1692870487" defer></script>
+    <script src=" <?= base_url('dist/libs/apexcharts/dist/apexcharts.min.js?1692870487')  ?>" defer></script>
+    <script src="<?= base_url('dist/libs/jsvectormap/dist/js/jsvectormap.min.js?1692870487')  ?>" defer></script>
+    <script src="<?= base_url('dist/libs/jsvectormap/dist/maps/world.js?1692870487') ?>" defer></script>
+    <script src="<?= base_url('dist/libs/jsvectormap/dist/maps/world-merc.js?1692870487') ?>" defer></script>
     <!-- Tabler Core -->
-    <script src="./dist/js/tabler.min.js?1692870487" defer></script>
-    <script src="./dist/js/demo.min.js?1692870487" defer></script>
+    <script src="<?= base_url('dist/js/tabler.min.js?1692870487') ?>" defer></script>
+    <script src="<?= base_url('dist/js/demo.min.js?1692870487') ?>" defer></script>
 </body>
 
 </html>

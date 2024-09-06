@@ -8,7 +8,7 @@
         <!-- Logo -->
         <h1 class="navbar-brand navbar-brand-autodark pe-0 pe-md-3">
             <a href=".">
-                <img src="logo.svg" width="110" height="32" alt="Tabler" class="navbar-brand-image">
+                <img src="<?= base_url('logo.svg') ?>" width="110" height="32" alt="Tabler" class="navbar-brand-image">
             </a>
         </h1>
         <!-- Avatar -->
@@ -35,7 +35,7 @@
         <!-- Collapsible Navbar Menu -->
         <div class="collapse navbar-collapse" id="navbar-menu">
             <ul class="navbar-nav">
-                <li class="nav-item <?= uri_string() == '' ? 'active' : ''  ?> ">
+                <li class="nav-item">
                     <a class="nav-link" href="/">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
@@ -50,7 +50,7 @@
                         <span class="nav-link-title"> Home </span>
                     </a>
                 </li>
-                <li class="nav-item <?= uri_string() == 'task' ? 'active' : '' ?>">
+                <li class="nav-item">
                     <a class="nav-link" href="/task">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -69,7 +69,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/">
+                    <a class="nav-link" href="/category">
                         <span class="nav-link-icon d-md-none d-lg-inline-block">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"

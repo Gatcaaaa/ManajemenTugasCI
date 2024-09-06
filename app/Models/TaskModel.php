@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class UserModel extends Model
+class TaskModel extends Model
 {
-    protected $table            = 'users';
+    protected $table            = 'tasks';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['name', 'email', 'password'];
+    protected $allowedFields    = ['title', 'slug', 'description', 'status', 'priority', 'category_id', 'due_date', 'user_id', 'created_at', 'updated_at'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
@@ -43,13 +43,4 @@ class UserModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
-
-    // protected function hashPassword(array $data)
-    // {
-    //     if (isset($data['data']['password'])) {
-    //         $data['data']['password'] = password_hash($data['data']['password'], PASSWORD_DEFAULT);
-    //     }
-
-    //     return $data;
-    // }
 }

@@ -12,6 +12,21 @@ $routes->get('/register', 'Auth::register');
 $routes->post('/register/action', 'Auth::registerAction');
 $routes->get('/logout', 'Auth::logout');
 
-$routes->get('/', 'Home::index', ['filter' => 'auth']);
-$routes->get('/task', 'Task::index', ['filter' => 'auth']);
-$routes->get('/task/create', 'Task::create', ['filter' => 'auth']);
+
+$routes->group('', ['namespace' => 'App\Controllers'], function($routes) {
+    $routes->get('/', 'Home::index');
+});
+
+$routes->group('task', ['namespace' => 'App\Controllers'], function($routes) {
+    $routes->get('/', 'Task::index'); 
+    $routes->get('create', 'Task::create');
+    $routes->post('save', 'Task::save'); 
+    // Tambahkan route lain seperti edit, delete jika diperlukan
+});
+
+$routes->group('category', ['namespace' => 'App\Controllers'], function($routes) {
+    $routes->get('/', 'Category::index'); 
+    $routes->get('create', 'Category::create'); 
+    $routes->post('save', 'Category::save'); 
+    // Tambahkan route lain jika ada aksi lebih lanjut
+});
