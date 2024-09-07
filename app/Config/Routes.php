@@ -21,7 +21,7 @@ $routes->group('task', ['namespace' => 'App\Controllers'], function($routes) {
     $routes->get('/', 'Task::index'); 
     $routes->get('create', 'Task::create');
     $routes->post('save', 'Task::save'); 
-    // Tambahkan route lain seperti edit, delete jika diperlukan
+    $routes->post('delete/(:num)', 'Task::delete/$1');
 });
 
 $routes->group('category', ['namespace' => 'App\Controllers'], function($routes) {

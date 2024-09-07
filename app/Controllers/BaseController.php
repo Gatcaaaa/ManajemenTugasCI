@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\UserModel;
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\CLIRequest;
 use CodeIgniter\HTTP\IncomingRequest;
@@ -35,7 +36,7 @@ abstract class BaseController extends Controller
      *
      * @var list<string>
      */
-    protected $helpers = [];
+    protected $helpers = ['form', 'url'];
 
     /**
      * Be sure to declare properties for any property fetch you initialized.
@@ -54,5 +55,23 @@ abstract class BaseController extends Controller
         // Preload any models, libraries, etc, here.
 
         // E.g.: $this->session = \Config\Services::session();
+
+        
+    }
+    protected $userModel;
+    public function __construct()
+    {
+        $this->userModel = new UserModel();
+    }
+
+    public function renderLayout($view, $data = [])
+    {
+        $session = session();
+        if ($session->get('logged_in')) {
+            $user = $this->userModel->find($session->get('user_id'));  // Fetch the user by ID
+            $data['user'] = $user;  // Pass user data to the view
+        }
+
+        echo view('layouts/template', $data);  // Assuming 'layouts/default' is your main layout file
     }
 }

@@ -22,10 +22,19 @@ class Task extends BaseController
     }
     public function index()
     {
+        $user_id = $this->session->get('user_id');
+
+        // Mengambil tasks dengan kategori
+        $tasks = $this->taskModel->getTasksWithCategory($user_id);
+
+        // Mengelompokkan tasks berdasarkan status
         $data = [
             'title' => 'Manajemen Tugas',
-            'tasks' => $this->taskModel->where('user_id', $this->session->get('user_id'))->findAll()
+            'not_started' => array_filter($tasks, fn($task) => $task['status'] === 'not_started'),
+            'in_progress' => array_filter($tasks, fn($task) => $task['status'] === 'in_progress'),
+            'completed' => array_filter($tasks, fn($task) => $task['status'] === 'completed'),
         ];
+
         return view('task/index', $data);
     }
     public function create()
@@ -97,6 +106,11 @@ class Task extends BaseController
             'category_id' => $this->request->getVar('category_id'),
         ]);
         session()->setFlashdata('success', 'Data tugas berhasil ditambahkan');
+        return redirect()->to('/task');
+    }
+    public function delete($id){
+        $this->taskModel->delete($id);
+        session()->setFlashdata('success', 'Data tugas berhasil dihapus');
         return redirect()->to('/task');
     }
 }

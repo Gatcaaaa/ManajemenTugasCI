@@ -43,4 +43,12 @@ class TaskModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getTasksWithCategory($user_id)
+    {
+        return $this->select('tasks.*, categories.name as category_name')
+                    ->join('categories', 'categories.id = tasks.category_id')
+                    ->where('tasks.user_id', $user_id)
+                    ->findAll();
+    }
 }
