@@ -54,4 +54,17 @@ class Category extends BaseController
         session()->setFlashdata('success', 'Data kategori berhasil ditambahkan');
         return redirect()->to('/category');
     }
+    public function delete($id)
+    {
+        $category = $this->categoryModel->find($id);
+
+        if (!$category) {
+            session()->setFlashdata('error', 'Kategori tidak ditemukan.');
+            return redirect()->to('/category');
+        }
+    
+        $this->categoryModel->delete($id);
+        session()->setFlashdata('success', 'Kategori berhasil dihapus.');
+        return redirect()->to('/category');
+    }
 }

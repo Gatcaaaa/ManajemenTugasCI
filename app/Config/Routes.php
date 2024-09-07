@@ -28,5 +28,5 @@ $routes->group('category', ['namespace' => 'App\Controllers'], function($routes)
     $routes->get('/', 'Category::index'); 
     $routes->get('create', 'Category::create'); 
     $routes->post('save', 'Category::save'); 
-    // Tambahkan route lain jika ada aksi lebih lanjut
+    $routes->get('delete/(:num)', 'Category::delete/$1');
 });
