@@ -22,8 +22,8 @@ class Task extends BaseController
     }
     public function index()
     {
-        $user_id = $this->session->get('user_id');
-
+        $user_id = $this->session->get('id');
+        
         // Mengambil tasks dengan kategori
         $tasks = $this->taskModel->getTasksWithCategory($user_id);
 

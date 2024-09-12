@@ -67,11 +67,11 @@ abstract class BaseController extends Controller
     public function renderLayout($view, $data = [])
     {
         $session = session();
-        if ($session->get('logged_in')) {
-            $user = $this->userModel->find($session->get('user_id'));  // Fetch the user by ID
-            $data['user'] = $user;  // Pass user data to the view
+        if ($session->get('isLoggedIn')) {
+            $user = $this->userModel->find($session->get('id')); 
+            $data['user'] = $user;  
         }
 
-        echo view('layouts/template', $data);  // Assuming 'layouts/default' is your main layout file
+        echo view('layouts/template', $data); 
     }
 }

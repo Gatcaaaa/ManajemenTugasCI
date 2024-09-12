@@ -33,7 +33,6 @@
         </div>
     </div>
 
-    <!-- Dynamically generate modals for each category -->
     <?php foreach ($categories as $c): ?>
     <div class="modal modal-blur fade" id="modal-<?= $c['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -50,10 +49,8 @@
                     <button type="button" class="btn me-auto" data-bs-dismiss="modal">Batal</button>
                     <a href="/category/delete/<?= $c['id'] ?>" class="btn btn-primary">Edit</a>
                     <a href="/category/delete/<?= $c['id'] ?>" class="btn btn-danger">Hapus</a>
-
                 </div>
             </div>
-
         </div>
     </div>
 </div>
