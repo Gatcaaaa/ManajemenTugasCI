@@ -22,6 +22,9 @@ $routes->group('task', ['namespace' => 'App\Controllers'], function($routes) {
     $routes->get('create', 'Task::create');
     $routes->post('save', 'Task::save'); 
     $routes->post('delete/(:num)', 'Task::delete/$1');
+    $routes->get('detail/(:segment)', 'Task::detail/$1');
+    $routes->get('edit/(:segment)', 'Task::edit/$1');
+    $routes->post('update/(:segment)', 'Task::update/$1');
 });
 
 $routes->group('category', ['namespace' => 'App\Controllers'], function($routes) {

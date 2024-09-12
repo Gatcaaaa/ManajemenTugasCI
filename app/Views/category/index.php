@@ -5,6 +5,9 @@
 <div class="page-wrapper">
     <div class="page-body">
         <div class="container">
+            <?php if (empty($categories)) : ?>
+            <p>No tasks in this category.</p>
+            <?php else: ?>
             <?php if (session()->getFlashdata('error')) : ?>
             <div class="alert alert-danger">
                 <?= session()->getFlashdata('error') ?>
@@ -16,20 +19,19 @@
                 <?= session()->getFlashdata('success') ?>
             </div>
             <?php endif; ?>
+
             <div class="card">
                 <div class="card-body">
-
                     <div class="btn-list">
                         <?php foreach ($categories as $c): ?>
-                        <!-- Assign a unique ID for each modal trigger -->
                         <a href="#" class="btn" data-bs-toggle="modal" data-bs-target="#modal-<?= $c['id'] ?>">
                             <?= $c['name'] ?>
                         </a>
                         <?php endforeach; ?>
                     </div>
-
                 </div>
             </div>
+            <?php endif; ?>
         </div>
     </div>
 
@@ -37,7 +39,6 @@
     <div class="modal modal-blur fade" id="modal-<?= $c['id'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-
                 <div class="modal-header">
                     <h5 class="modal-title"><?= $c['name'] ?></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -47,14 +48,13 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn me-auto" data-bs-dismiss="modal">Batal</button>
-                    <a href="/category/delete/<?= $c['id'] ?>" class="btn btn-primary">Edit</a>
+                    <a href="/category/edit/<?= $c['id'] ?>" class="btn btn-primary">Edit</a>
                     <a href="/category/delete/<?= $c['id'] ?>" class="btn btn-danger">Hapus</a>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<?php endforeach; ?>
+    <?php endforeach; ?>
 </div>
 
 <?= $this->endSection(); ?>

@@ -74,7 +74,7 @@
                                         </a>
                                     </div>
                                     <div class="col-auto text-secondary">
-                                        <a href="">
+                                        <a href="/task/detail/<?= esc($task['slug']) ?>">
                                             <span class="badge bg-green text-green-fg">Detail</span>
                                         </a>
                                     </div>

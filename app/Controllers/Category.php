@@ -18,9 +18,10 @@ class Category extends BaseController
     }
     public function index()
     {
+        $user_id = $this->session->get('id');  
         $data = [
             'title' => 'Manajemen Kategori',
-            'categories' => $this->categoryModel->findAll()
+            'categories' => $this->categoryModel->getCategoryUsers($user_id)  // Fetch categories only for this user
         ];
         return view('category/index', $data);
     }
@@ -46,8 +47,9 @@ class Category extends BaseController
         ])) {
             return redirect()->to('/category/create')->withInput();
         }
-
+        $user_id = $this->session->get('id');
         $data = [
+            'user_id' => $user_id,
             'name' => $this->request->getVar('name')
         ];
         $this->categoryModel->save($data);

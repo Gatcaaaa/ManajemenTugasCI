@@ -43,4 +43,12 @@ class CategoryModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getCategoryUsers($user_id)
+    {
+        return $this->select('categories.id, categories.name')
+                    ->where('user_id', $user_id)
+                    ->findAll();
+    }
+
 }

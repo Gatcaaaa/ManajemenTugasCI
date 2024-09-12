@@ -69,7 +69,7 @@ abstract class BaseController extends Controller
         $session = session();
         if ($session->get('isLoggedIn')) {
             $user = $this->userModel->find($session->get('id')); 
-            $data['user'] = $user;  
+            $data['user'] = $user; 
         }
 
         echo view('layouts/template', $data); 
